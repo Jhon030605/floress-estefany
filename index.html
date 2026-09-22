@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Para Estefany ❤️</title>
 <style>
 
@@ -22,13 +22,28 @@ html, body {
     margin: 0;
     width: 100%;
     height: 100%;
+    height: 100dvh;
     overflow: hidden;
+    overscroll-behavior: none;
+    touch-action: pan-x pan-y;
 }
 
 body {
     font-family: Georgia, 'Times New Roman', serif;
     background: #0a0714;
     color: white;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.card p, .note-paper, h1, .message {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+button, .envelope, .music-badge {
+    touch-action: manipulation;
 }
 
 .screen {
@@ -834,6 +849,35 @@ h1 {
     #surpriseBtn { font-size: .82rem; padding: 12px 14px; width: 92vw; }
 }
 
+/* CELULAR EN HORIZONTAL: poca altura, compactar todo */
+@media (max-height: 480px) and (orientation: landscape) {
+    .envelope { width: min(220px, 55vw); height: 145px; }
+    .intro { margin-bottom: 14px; font-size: 12px; }
+    .open-text { margin-top: 12px; font-size: 15px; }
+
+    .content { padding-top: 2.5vh; }
+    .small { font-size: 11px; }
+    h1 { font-size: clamp(2rem, 8vh, 3.4rem); margin: 4px 0; }
+    .message { font-size: clamp(1rem, 4vh, 1.5rem); margin: 2px 0 8px; }
+    .doodle { font-size: 22px; }
+
+    .flowers { height: 260px; bottom: -110px; }
+    .flower { transform: scale(.55) !important; }
+    .flower:nth-child(1) { left: -4%; }
+    .flower:nth-child(5) { left: 94%; }
+    .note-paper { bottom: 120px; width: 150px; height: 92px; font-size: 15px; padding: 14px 6px; }
+    .baby-bunch { transform: scale(.65); }
+
+    .lantern-unit { transform: scale(.55); transform-origin: bottom right; right: 1%; }
+    .music-badge { width: 34px; height: 34px; top: 8px; right: 10px; font-size: 15px; }
+
+    #surpriseBtn { bottom: 2%; padding: 10px 16px; font-size: .82rem; }
+    .card { padding: 18px 16px; max-height: 88vh; overflow-y: auto; }
+    .bigheart { font-size: 44px; }
+    .card h2 { font-size: 1.2rem; margin: 6px; }
+    .card p { font-size: .9rem; margin: 10px 0 16px; line-height: 1.4; }
+}
+
 </style>
 </head>
 <body>
@@ -1173,3 +1217,4 @@ if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermis
 
 </body>
 </html>
+
