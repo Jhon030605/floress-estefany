@@ -1,0 +1,1575 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Estefany ❤️</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: #140d22;
+    color: white;
+}
+
+/* =========================================
+   PANTALLAS
+========================================= */
+
+.screen {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.06);
+}
+
+
+/* =========================================
+   SOBRE INICIAL
+========================================= */
+
+#envelopeScreen {
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #5b3a61,
+            #24152f 45%,
+            #0e0918
+        );
+
+    z-index: 10;
+}
+
+.envelope-wrap {
+    text-align: center;
+    width: 90%;
+    max-width: 430px;
+}
+
+.intro {
+    letter-spacing: 2px;
+    font-size: 14px;
+    opacity: .85;
+    margin-bottom: 28px;
+}
+
+.envelope {
+    position: relative;
+
+    width: min(330px, 80vw);
+    height: 210px;
+
+    margin: auto;
+
+    cursor: pointer;
+
+    filter: drop-shadow(
+        0 18px 25px rgba(0,0,0,.4)
+    );
+
+    transition: transform .3s;
+}
+
+.envelope:hover {
+    transform: translateY(-5px);
+}
+
+.env-body {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(145deg,#f4b83f,#d88720);
+
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.env-body::before,
+.env-body::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+
+    width: 72%;
+    height: 115%;
+
+    background: #e39a2d;
+}
+
+.env-body::before {
+    left: -35%;
+    transform: skewX(38deg);
+}
+
+.env-body::after {
+    right: -35%;
+    transform: skewX(-38deg);
+}
+
+.flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 115px;
+
+    background: #ffc94f;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    z-index: 3;
+
+    transform-origin: top;
+
+    transition: transform 1s ease;
+}
+
+.heart-seal {
+    position: absolute;
+
+    z-index: 5;
+
+    left: 50%;
+    top: 105px;
+
+    transform: translate(-50%,-50%);
+
+    font-size: 45px;
+
+    transition: opacity .4s;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .heart-seal {
+    opacity: 0;
+}
+
+.open-text {
+    margin-top: 25px;
+    font-size: 18px;
+    animation: pulse 1.7s infinite;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: .55;
+        transform: scale(.98);
+    }
+}
+
+
+/* =========================================
+   PANTALLA PRINCIPAL
+   TODO CREADO CON CSS
+========================================= */
+
+#mainScreen {
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #111c3b 0%,
+            #39294c 30%,
+            #b45e45 57%,
+            #ffb63e 73%,
+            #3c2b45 100%
+        );
+}
+
+
+/* =========================================
+   SOL DEL ATARDECER
+========================================= */
+
+.sun {
+    position: absolute;
+
+    width: 75px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    background: #ffe6a0;
+
+    box-shadow:
+        0 0 35px #ffc44b,
+        0 0 80px rgba(255,190,70,.6);
+
+    top: 40%;
+
+    left: 67%;
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   CIELO - NUBES
+========================================= */
+
+.cloud {
+    position: absolute;
+
+    width: 240px;
+    height: 45px;
+
+    background: rgba(220,150,150,.18);
+
+    border-radius: 50%;
+
+    filter: blur(15px);
+}
+
+.cloud.c1 {
+    top: 16%;
+    left: -50px;
+}
+
+.cloud.c2 {
+    top: 25%;
+    right: -50px;
+    width: 300px;
+}
+
+.cloud.c3 {
+    top: 38%;
+    left: 25%;
+    width: 320px;
+}
+
+
+/* =========================================
+   MONTANAS
+========================================= */
+
+.mountains {
+    position: absolute;
+
+    bottom: 26%;
+
+    left: -10%;
+
+    width: 120%;
+    height: 190px;
+
+    background: #332b48;
+
+    clip-path: polygon(
+        0 100%,
+        0 65%,
+        12% 45%,
+        24% 68%,
+        39% 25%,
+        51% 63%,
+        65% 38%,
+        79% 60%,
+        92% 30%,
+        100% 58%,
+        100% 100%
+    );
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   CIUDAD CON LUCES
+========================================= */
+
+.city {
+    position: absolute;
+
+    bottom: 20%;
+    left: 0;
+
+    width: 100%;
+    height: 100px;
+
+    background:
+        linear-gradient(
+            to top,
+            #1b1b30,
+            transparent
+        );
+
+    z-index: 2;
+}
+
+.city::before {
+    content: "";
+
+    position: absolute;
+    inset: 30px 0 0;
+
+    background-image:
+        radial-gradient(#f4b94f 2px, transparent 3px);
+
+    background-size: 32px 27px;
+
+    opacity: .65;
+}
+
+
+/* =========================================
+   BRILLOS
+========================================= */
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    z-index: 3;
+}
+
+.star {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #fff5b2;
+
+    box-shadow:
+        0 0 12px #ffd83d;
+
+    animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+
+    50% {
+        opacity: .2;
+        transform: scale(.5);
+    }
+
+}
+
+
+/* =========================================
+   CONTENIDO ROMÁNTICO
+========================================= */
+
+.content {
+    position: relative;
+
+    z-index: 8;
+
+    text-align: center;
+
+    width: 100%;
+
+    height: 100%;
+
+    padding: 7vh 20px 0;
+
+    animation: rise 1.4s ease;
+}
+
+@keyframes rise {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+
+}
+
+.small {
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    opacity: .9;
+}
+
+h1 {
+    margin: 8px 0;
+
+    font-size: clamp(3.2rem, 14vw, 6.5rem);
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    text-shadow:
+        0 0 24px rgba(255,220,80,.55);
+}
+
+.message {
+    font-size: clamp(1.4rem, 5vw, 2.3rem);
+
+    line-height: 1.35;
+
+    margin: 5px 0 22px;
+}
+
+.doodle {
+    color: #ffd447;
+
+    font-size: 35px;
+}
+
+
+/* =========================================
+   RAMO DE FLORES
+========================================= */
+
+.flowers {
+    position: absolute;
+
+    bottom: -55px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(700px, 135%);
+
+    height: 400px;
+
+    z-index: 5;
+}
+
+
+/* PAPEL DEL RAMO */
+
+.bouquet-paper {
+    position: absolute;
+
+    bottom: -10px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 88%;
+    height: 280px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #a76b3b,
+            #d9a060,
+            #8e542e
+        );
+
+    clip-path: polygon(
+        3% 0,
+        97% 0,
+        78% 100%,
+        22% 100%
+    );
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,.3);
+
+    z-index: 1;
+}
+
+
+/* TALLOS */
+
+.stem {
+    position: absolute;
+
+    width: 10px;
+    height: 230px;
+
+    background: #315c25;
+
+    border-radius: 10px;
+
+    bottom: 45px;
+}
+
+
+/* GIRASOL */
+
+.flower {
+    position: absolute;
+
+    bottom: 140px;
+
+    width: 150px;
+    height: 180px;
+
+    animation: sway 4s ease-in-out infinite;
+}
+
+.flower:nth-child(1) {
+    left: 3%;
+    transform: scale(.8);
+}
+
+.flower:nth-child(2) {
+    left: 25%;
+    transform: scale(1.1);
+
+    animation-delay: .8s;
+}
+
+.flower:nth-child(3) {
+    left: 48%;
+    transform: scale(.95);
+
+    animation-delay: .3s;
+}
+
+.flower:nth-child(4) {
+    left: 70%;
+    transform: scale(1.1);
+
+    animation-delay: 1s;
+}
+
+.flower:nth-child(5) {
+    left: 88%;
+    transform: scale(.75);
+
+    animation-delay: .5s;
+}
+
+@keyframes sway {
+
+    50% {
+        margin-left: 7px;
+    }
+
+}
+
+.head {
+    position: absolute;
+
+    bottom: 65px;
+    left: 50%;
+
+    width: 105px;
+    height: 105px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #65310e;
+
+    box-shadow:
+        0 0 0 7px #a95c16;
+
+    z-index: 2;
+}
+
+
+/* PÉTALOS */
+
+.petal {
+    position: absolute;
+
+    width: 42px;
+    height: 70px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e99c08,
+            #ffd42b
+        );
+
+    border-radius: 50%;
+
+    left: 31px;
+    top: 18px;
+
+    transform-origin: 50% 35px;
+}
+
+.p1 {
+    transform: rotate(0deg) translateY(-42px);
+}
+
+.p2 {
+    transform: rotate(45deg) translateY(-42px);
+}
+
+.p3 {
+    transform: rotate(90deg) translateY(-42px);
+}
+
+.p4 {
+    transform: rotate(135deg) translateY(-42px);
+}
+
+.p5 {
+    transform: rotate(180deg) translateY(-42px);
+}
+
+.p6 {
+    transform: rotate(225deg) translateY(-42px);
+}
+
+.p7 {
+    transform: rotate(270deg) translateY(-42px);
+}
+
+.p8 {
+    transform: rotate(315deg) translateY(-42px);
+}
+
+
+/* CENTRO DEL GIRASOL */
+
+.head::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 20px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #25140c 10%,
+            #4c250c 45%,
+            #7e4314 100%
+        );
+
+    z-index: 5;
+}
+
+
+/* HOJAS */
+
+.leaf {
+    position: absolute;
+
+    width: 75px;
+    height: 28px;
+
+    background: #477b2f;
+
+    border-radius: 100% 0 100% 0;
+
+    bottom: 40px;
+}
+
+.leaf.l {
+    left: -15px;
+    transform: rotate(25deg);
+}
+
+.leaf.r {
+    right: -15px;
+    transform: scaleX(-1) rotate(25deg);
+}
+
+
+/* FLORES PEQUENAS */
+
+.small-flower {
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #f6d9a1 0 15%,
+            #fff8df 16% 30%,
+            transparent 31%
+        );
+
+    background-color: #fff5d2;
+
+    box-shadow:
+        0 0 0 8px #fff7df;
+
+    transform: scale(.4);
+}
+
+
+/* =========================================
+   TARJETA DENTRO DEL RAMO
+========================================= */
+
+.note-paper {
+    position: absolute;
+
+    bottom: 195px;
+    left: 50%;
+
+    transform: translateX(-50%) rotate(-9deg);
+
+    width: 220px;
+    height: 130px;
+
+    background:
+        linear-gradient(
+            140deg,
+            #d59b5b,
+            #f1c487
+        );
+
+    color: #3d2415;
+
+    z-index: 6;
+
+    padding: 30px 10px;
+
+    font-family: cursive;
+
+    font-size: 19px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.2);
+}
+
+
+/* =========================================
+   LINTERNA
+========================================= */
+
+.lantern {
+    position: absolute;
+
+    right: 4%;
+
+    bottom: 9%;
+
+    width: 75px;
+    height: 130px;
+
+    background:
+        linear-gradient(
+            to right,
+            #241a16,
+            #5a3924,
+            #241a16
+        );
+
+    border: 5px solid #211713;
+
+    border-radius: 8px;
+
+    z-index: 6;
+
+    box-shadow:
+        0 0 15px rgba(0,0,0,.5);
+}
+
+.lantern::before {
+    content: "";
+
+    position: absolute;
+
+    top: -15px;
+    left: 15px;
+
+    width: 35px;
+    height: 15px;
+
+    background: #2a1c15;
+
+    border-radius: 50%;
+}
+
+.lantern::after {
+    content: "🕯️";
+
+    position: absolute;
+
+    font-size: 35px;
+
+    left: 15px;
+    top: 45px;
+
+    filter: drop-shadow(
+        0 0 12px orange
+    );
+}
+
+
+/* =========================================
+   BOTÓN DE SORPRESA
+========================================= */
+
+#surpriseBtn {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 5%;
+
+    transform: translateX(-50%);
+
+    width: min(390px, 85vw);
+
+    border: 2px solid #ffda4a;
+
+    background:
+        rgba(20,10,30,.75);
+
+    color: white;
+
+    padding: 17px 25px;
+
+    border-radius: 999px;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    z-index: 10;
+
+    transition:
+        background .3s,
+        transform .3s;
+}
+
+#surpriseBtn:hover {
+
+    background:
+        rgba(80,40,30,.9);
+
+    transform:
+        translateX(-50%) scale(1.03);
+}
+
+
+/* =========================================
+   HOJAS CAYENDO
+========================================= */
+
+.fall {
+
+    position: absolute;
+
+    top: -40px;
+
+    z-index: 7;
+
+    pointer-events: none;
+
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+
+    to {
+
+        transform:
+            translateY(115vh)
+            rotate(540deg);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================
+   SEGUNDA SORPRESA
+========================================= */
+
+#surprise {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(10,6,18,.94);
+
+    z-index: 20;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity .8s;
+}
+
+#surprise.show {
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+.card {
+
+    max-width: 500px;
+
+    padding: 35px 25px;
+
+    border: 1px solid rgba(255,211,48,.5);
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    box-shadow:
+        0 0 45px rgba(255,200,40,.12);
+
+    animation: cardIn .9s ease;
+}
+
+@keyframes cardIn {
+
+    from {
+        transform: scale(.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+.bigheart {
+
+    font-size: 70px;
+
+    animation: heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat {
+
+    50% {
+        transform: scale(1.12);
+    }
+
+}
+
+.card h2 {
+
+    font-size: 2rem;
+
+    font-weight: 400;
+
+    margin: 10px;
+}
+
+.card p {
+
+    font-size: 1.2rem;
+
+    line-height: 1.7;
+
+    margin: 16px 0 25px;
+}
+
+.card button {
+
+    border: 1px solid #ffda4a;
+
+    background: rgba(20,10,30,.45);
+
+    color: white;
+
+    padding: 13px 23px;
+
+    border-radius: 999px;
+
+    font-size: .95rem;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .content {
+        padding-top: 8vh;
+    }
+
+    .note-paper {
+        width: 170px;
+        height: 105px;
+
+        bottom: 190px;
+
+        font-size: 15px;
+
+        padding: 22px 5px;
+    }
+
+    .lantern {
+        width: 55px;
+        height: 100px;
+
+        right: 2%;
+    }
+
+    .lantern::after {
+        left: 7px;
+        top: 30px;
+        font-size: 28px;
+    }
+
+    .flower {
+        transform: scale(.7);
+    }
+
+    #surpriseBtn {
+        bottom: 4%;
+        font-size: .9rem;
+        padding: 14px 18px;
+    }
+
+    .card h2 {
+        font-size: 1.6rem;
+    }
+
+    .card p {
+        font-size: 1rem;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     PRIMERA PANTALLA: SOBRE
+========================================= -->
+
+<section class="screen" id="envelopeScreen">
+
+    <div class="envelope-wrap">
+
+        <div class="intro">
+            Tienes una pequeña sorpresa 💌
+        </div>
+
+        <div class="envelope" id="envelope">
+
+            <div class="env-body"></div>
+
+            <div class="flap"></div>
+
+            <div class="heart-seal">
+                ❤️
+            </div>
+
+        </div>
+
+        <div class="open-text">
+            Toca el sobre para abrirlo ✨
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     PANTALLA PRINCIPAL
+========================================= -->
+
+<section class="screen hidden" id="mainScreen">
+
+
+    <!-- SOL -->
+
+    <div class="sun"></div>
+
+
+    <!-- NUBES -->
+
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+
+
+    <!-- MONTAÑAS -->
+
+    <div class="mountains"></div>
+
+
+    <!-- CIUDAD -->
+
+    <div class="city"></div>
+
+
+    <!-- ESTRELLAS -->
+
+    <div class="stars" id="stars"></div>
+
+
+    <!-- CONTENIDO -->
+
+    <div class="content">
+
+        <div class="small">
+            Para alguien muy especial 🌻
+        </div>
+
+        <h1>
+            Estefany
+        </h1>
+
+        <div class="message">
+            te quiero muchote
+            <br>
+            mi amor
+            <span class="doodle">♡</span>
+        </div>
+
+    </div>
+
+
+    <!-- RAMO DE FLORES -->
+
+    <div class="flowers">
+
+        <div class="bouquet-paper"></div>
+
+
+        <!-- GIRASOL 1 -->
+
+        <div class="flower">
+
+            <div class="head">
+
+                <i class="petal p1"></i>
+                <i class="petal p2"></i>
+                <i class="petal p3"></i>
+                <i class="petal p4"></i>
+                <i class="petal p5"></i>
+                <i class="petal p6"></i>
+                <i class="petal p7"></i>
+                <i class="petal p8"></i>
+
+            </div>
+
+            <div class="stem"></div>
+
+            <i class="leaf l"></i>
+
+        </div>
+
+
+        <!-- GIRASOL 2 -->
+
+        <div class="flower">
+
+            <div class="head">
+
+                <i class="petal p1"></i>
+                <i class="petal p2"></i>
+                <i class="petal p3"></i>
+                <i class="petal p4"></i>
+                <i class="petal p5"></i>
+                <i class="petal p6"></i>
+                <i class="petal p7"></i>
+                <i class="petal p8"></i>
+
+            </div>
+
+            <div class="stem"></div>
+
+            <i class="leaf r"></i>
+
+        </div>
+
+
+        <!-- GIRASOL 3 -->
+
+        <div class="flower">
+
+            <div class="head">
+
+                <i class="petal p1"></i>
+                <i class="petal p2"></i>
+                <i class="petal p3"></i>
+                <i class="petal p4"></i>
+                <i class="petal p5"></i>
+                <i class="petal p6"></i>
+                <i class="petal p7"></i>
+                <i class="petal p8"></i>
+
+            </div>
+
+            <div class="stem"></div>
+
+            <i class="leaf l"></i>
+
+        </div>
+
+
+        <!-- GIRASOL 4 -->
+
+        <div class="flower">
+
+            <div class="head">
+
+                <i class="petal p1"></i>
+                <i class="petal p2"></i>
+                <i class="petal p3"></i>
+                <i class="petal p4"></i>
+                <i class="petal p5"></i>
+                <i class="petal p6"></i>
+                <i class="petal p7"></i>
+                <i class="petal p8"></i>
+
+            </div>
+
+            <div class="stem"></div>
+
+            <i class="leaf r"></i>
+
+        </div>
+
+
+        <!-- GIRASOL 5 -->
+
+        <div class="flower">
+
+            <div class="head">
+
+                <i class="petal p1"></i>
+                <i class="petal p2"></i>
+                <i class="petal p3"></i>
+                <i class="petal p4"></i>
+                <i class="petal p5"></i>
+                <i class="petal p6"></i>
+                <i class="petal p7"></i>
+                <i class="petal p8"></i>
+
+            </div>
+
+            <div class="stem"></div>
+
+            <i class="leaf l"></i>
+
+        </div>
+
+
+        <!-- TARJETA -->
+
+        <div class="note-paper">
+
+            Gracias por
+            <br>
+            estar siempre ♡
+
+        </div>
+
+    </div>
+
+
+    <!-- LINTERNA -->
+
+    <div class="lantern"></div>
+
+
+    <!-- BOTÓN -->
+
+    <button id="surpriseBtn">
+
+        ☝️ Toca la pantalla
+        <br>
+        para ver algo especial 💛
+
+    </button>
+
+
+</section>
+
+
+
+<!-- =========================================
+     SEGUNDA SORPRESA
+========================================= -->
+
+<div id="surprise">
+
+    <div class="card">
+
+        <div class="bigheart">
+            💛
+        </div>
+
+        <h2>
+            Y todavía falta algo...
+        </h2>
+
+        <p>
+
+            Si pudiera regalarte todas las flores
+            del mundo,
+
+            <br>
+
+            igual sentiría que son pocas para ti. 🌻
+
+            <br><br>
+
+            <strong>
+                Te quiero muchote, mi amor. ❤️
+            </strong>
+
+        </p>
+
+        <button id="closeSurprise">
+
+            Volver a las flores 🌻
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+
+/* =========================================
+   REFERENCIAS
+========================================= */
+
+const envelope =
+    document.getElementById("envelope");
+
+const envelopeScreen =
+    document.getElementById("envelopeScreen");
+
+const mainScreen =
+    document.getElementById("mainScreen");
+
+const surprise =
+    document.getElementById("surprise");
+
+const surpriseBtn =
+    document.getElementById("surpriseBtn");
+
+
+
+/* =========================================
+   ABRIR SOBRE
+========================================= */
+
+envelope.addEventListener("click", () => {
+
+    envelope.classList.add("open");
+
+    setTimeout(() => {
+
+        envelopeScreen.classList.add("hidden");
+
+        mainScreen.classList.remove("hidden");
+
+        startFlowers();
+
+    }, 900);
+
+});
+
+
+
+/* =========================================
+   ESTRELLAS
+========================================= */
+
+const stars =
+    document.getElementById("stars");
+
+for (let i = 0; i < 60; i++) {
+
+    const s =
+        document.createElement("span");
+
+    s.className = "star";
+
+    s.style.left =
+        Math.random() * 100 + "%";
+
+    s.style.top =
+        Math.random() * 65 + "%";
+
+    s.style.animationDelay =
+        Math.random() * 2 + "s";
+
+    stars.appendChild(s);
+
+}
+
+
+
+/* =========================================
+   HOJAS Y CORAZONES
+========================================= */
+
+function drop() {
+
+    const p =
+        document.createElement("div");
+
+    p.className = "fall";
+
+
+    p.textContent =
+        Math.random() > .35
+            ? "🍂"
+            : "💛";
+
+
+    p.style.left =
+        Math.random() * 100 + "%";
+
+
+    p.style.fontSize =
+        16 + Math.random() * 17 + "px";
+
+
+    p.style.animationDuration =
+        5 + Math.random() * 5 + "s";
+
+
+    mainScreen.appendChild(p);
+
+
+    setTimeout(() => {
+
+        p.remove();
+
+    }, 11000);
+
+}
+
+
+
+/* =========================================
+   INICIAR EFECTOS
+========================================= */
+
+let flowersStarted = false;
+
+function startFlowers() {
+
+    if (flowersStarted) return;
+
+    flowersStarted = true;
+
+    setInterval(drop, 550);
+
+}
+
+
+
+/* =========================================
+   ABRIR SORPRESA
+========================================= */
+
+surpriseBtn.addEventListener("click", () => {
+
+    surprise.classList.add("show");
+
+
+    for (let i = 0; i < 20; i++) {
+
+        setTimeout(drop, i * 70);
+
+    }
+
+});
+
+
+
+/* =========================================
+   CERRAR SORPRESA
+========================================= */
+
+document
+    .getElementById("closeSurprise")
+    .addEventListener("click", () => {
+
+        surprise.classList.remove("show");
+
+    });
+
+
+</script>
+
+</body>
+
+</html>
